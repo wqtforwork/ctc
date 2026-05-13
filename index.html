@@ -125,7 +125,7 @@
       margin: 0 auto;
       padding: 1rem 2rem 1.4rem;
       display: grid;
-      grid-template-columns: 360px 1fr;
+      grid-template-columns: 330px 1fr;
       gap: 1.2rem;
       align-items: start;
     }
@@ -224,7 +224,7 @@
       line-height: 1.45;
     }
     .guideline-banner.ok {
-      background: var(--green-light);
+      background: #b9dcc8;
       border-color: #b9dcc8;
       color: #1f5638;
     }
@@ -336,16 +336,23 @@
       padding: 1rem 1.2rem;
     }
     .breakdown-body {
-      display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 1rem;
-      align-items: center;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
     }
     .donut-wrap {
-      position: relative; height: 170px; width: 170px;
+      position: relative; 
+      height: 170px; 
+      width: 170px; 
+      flex-shrink: 0;
+      pointer-events: none;
+    }
+    #breakdownChart {
+      max-width: 170px;
+      max-height: 170px;
     }
     .donut-legend {
-      display: flex; flex-direction: column; gap: 0.4rem;
+      display: flex; flex-direction: column; gap: 0.4rem; flex: 1; pointer-events: auto;
     }
     .leg-row {
       display: grid;
@@ -444,213 +451,195 @@
     }
     .comp-card:hover { border-color: var(--gold-light); }
     .comp-card.active {
-      background: var(--gold-wash);
+      background: #fff;
       border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(184,135,58,0.1);
     }
     .comp-card-badge {
-      font-size: 0.55rem; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; color: var(--gold);
-      margin-bottom: 0.2rem;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 0.3rem;
     }
-    .comp-card-name { font-size: 0.78rem; font-weight: 600; color: var(--ink-2); margin-bottom: 0.45rem; }
+    .comp-card-name {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.55rem;
+    }
     .comp-net {
       font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.1rem; color: var(--ink); margin-bottom: 0.1rem;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.1rem;
     }
-    .comp-net-label { font-size: 0.58rem; color: var(--ink-4); margin-bottom: 0.5rem; }
-    .comp-divider { border: 0; border-top: 1px solid var(--paper-3); margin: 0.45rem 0; }
+    .comp-net-label {
+      font-size: 0.6rem;
+      color: var(--ink-4);
+      margin-bottom: 0.6rem;
+    }
+    .comp-divider {
+      border: none; border-top: 1px dashed var(--paper-3);
+      margin: 0.6rem 0;
+    }
     .comp-row {
-      display: flex; justify-content: space-between;
-      font-size: 0.64rem; margin-bottom: 0.25rem;
-      color: var(--ink-3);
-    }
-    .comp-row span:last-child { font-weight: 600; color: var(--ink-2); }
-    .comp-row span.savings { color: var(--green); font-weight: 700; }
-
-    /* per-scenario input strip (inline with block head) */
-    .sc-input-strip {
-      padding: 0.4rem 0.7rem;
-      background: var(--paper);
-      border: 1px dashed var(--paper-3);
-      border-radius: var(--radius-sm);
       display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      font-size: 0.65rem;
+      color: var(--ink-2);
+      margin-bottom: 0.4rem;
+    }
+    .comp-row span:last-child {
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .comp-row .savings {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    /* SC INPUT STRIP (inline with scenario picker) */
+    .sc-input-strip {
+      display: flex; flex-direction: column; gap: 0.5rem;
+      align-items: flex-end;
     }
     .sc-input-label {
-      font-size: 0.7rem; font-weight: 600;
-      color: var(--ink-2);
-      display: flex; align-items: center; gap: 5px;
-    }
-    .sc-input-label .ico { font-size: 0.85rem; line-height: 1; }
-    .sc-input-label .lbl-hint {
-      font-weight: 400; color: var(--ink-4);
-      font-size: 0.62rem;
+      font-size: 0.72rem; font-weight: 600; color: var(--ink-2);
+      display: flex; align-items: center; gap: 4px;
     }
     .sc-input-controls {
-      display: flex; align-items: center; gap: 8px;
-      flex-wrap: wrap;
+      display: flex; align-items: center; gap: 0.6rem;
     }
-    .sc-input-controls input[type="number"] {
-      background: #fff;
+    .sc-input-controls input {
+      background: var(--paper);
       border: 1.5px solid var(--paper-3);
       border-radius: var(--radius-sm);
-      padding: 0.3rem 0.55rem;
-      font-size: 0.78rem; font-weight: 600;
+      padding: 0.35rem 0.55rem;
+      font-size: 0.75rem; font-weight: 500;
       color: var(--ink);
+      width: 70px;
       outline: none;
-      font-family: inherit;
-      width: 80px;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      transition: border-color 0.15s;
     }
-    .sc-input-controls input[type="number"]:focus {
+    .sc-input-controls input:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(184,135,58,0.12);
+      box-shadow: 0 0 0 2px rgba(184,135,58,0.12);
     }
     .sc-input-note {
-      font-size: 0.65rem; color: var(--ink-3);
-      font-style: italic;
-    }
-    .sc-input-strip.empty {
-      opacity: 0.55;
+      font-size: 0.6rem;
+      color: var(--ink-4);
       font-style: italic;
     }
 
-    /* ── CDP INFO BOX ── */
+    /* CDP box */
     .cdp-box {
       background: var(--blue-light);
-      border: 1px solid #c0d4ef;
+      border: 1px solid #c5dff5;
       border-radius: var(--radius-sm);
-      padding: 0.6rem 0.85rem;
+      padding: 0.8rem 0.9rem;
       margin-top: 0.6rem;
       display: none;
     }
-    .cdp-box.show { display: block; }
-    .cdp-box-title {
-      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.5px;
-      text-transform: uppercase; color: var(--blue);
-      margin-bottom: 0.25rem;
+    .cdp-box.show {
+      display: block;
     }
-    .cdp-box p { font-size: 0.7rem; color: #2a4a6a; line-height: 1.5; }
+    .cdp-box-title {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 0.4rem;
+    }
+    .cdp-box p {
+      font-size: 0.65rem;
+      color: var(--blue);
+      line-height: 1.5;
+    }
+    .cdp-box em {
+      font-style: italic;
+      color: var(--ink);
+    }
 
-    /* ── CTA ── */
+    /* ── CTA BAND ── */
     .cta-band {
-      background: linear-gradient(135deg, var(--gold) 0%, #a07631 100%);
+      background: var(--gold);
       border-radius: var(--radius);
-      padding: 0.95rem 1.2rem;
+      padding: 1.1rem 1.2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      position: relative;
-      overflow: hidden;
     }
-    .cta-band::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 100% at 100% 50%, rgba(255,255,255,0.15) 0%, transparent 60%);
+    .cta-text {
+      flex: 1;
     }
-    .cta-text { position: relative; z-index: 1; }
     .cta-eyebrow {
-      font-size: 0.58rem; font-weight: 600; letter-spacing: 1.3px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
+      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.5px;
+      text-transform: uppercase; color: rgba(26,24,20,0.6);
       margin-bottom: 0.25rem;
     }
-    .cta-text h3 {
+    .cta-band h3 {
       font-family: 'DM Serif Display', Georgia, serif;
-      font-size: 1.05rem; font-weight: 400;
-      color: #fff;
-      line-height: 1.2;
+      font-size: 0.95rem; font-weight: 400;
+      color: var(--ink);
     }
-    .cta-text p { font-size: 0.74rem; color: rgba(255,255,255,0.82); max-width: 460px; line-height: 1.55; }
     .cta-btn {
-      background: #fff;
-      color: var(--gold);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.78rem; font-weight: 700;
-      padding: 0.65rem 1.1rem;
-      border: none; border-radius: var(--radius-sm);
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 0.55rem 1rem;
+      font-size: 0.72rem;
+      font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
-      transition: all 0.15s;
-      letter-spacing: 0.2px;
-      flex-shrink: 0;
-      position: relative; z-index: 1;
-      display: inline-flex; align-items: center; gap: 8px;
+      transition: background 0.2s;
     }
-    .cta-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+    .cta-btn:hover {
+      background: var(--ink-2);
+    }
 
     /* ── FOOTER ── */
     .footer {
-      margin-top: 0;
-      font-size: 0.65rem; color: var(--ink-4);
-      line-height: 1.6;
-      padding: 0.85rem 1.1rem;
       background: #fff;
       border: 1px solid var(--paper-3);
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius);
+      padding: 0.9rem 1rem;
+      font-size: 0.62rem;
+      color: var(--ink-3);
+      line-height: 1.5;
     }
-    .footer strong { color: var(--ink-3); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1100px) {
-      .layout { grid-template-columns: 320px 1fr; }
-      .pic-donut-row { grid-template-columns: 1fr; }
-      .hero-inner { grid-template-columns: 1fr; gap: 0.6rem; }
-    }
-    @media (max-width: 940px) {
-      .layout { grid-template-columns: 1fr; padding: 1rem 1.2rem 1.4rem; }
-      .breakdown-body { grid-template-columns: 1fr; }
-      .donut-wrap { margin: 0 auto; }
-      .cpw-tiles { grid-template-columns: 1fr; }
-      .comp-grid { grid-template-columns: 1fr; }
-      .cta-band { flex-direction: column; align-items: flex-start; text-align: left; gap: 0.6rem; }
-      .topbar { padding: 0.7rem 1.2rem; }
-      .hero-strip { padding: 1.2rem 1.2rem 1rem; }
-      .pic-card { grid-template-columns: auto 1fr; }
-      .pic-tag { display: none; }
-      .block-head { flex-direction: column; align-items: flex-start; }
-    }
-
-    /* Animate in */
-    .pic-card, .breakdown-card, .cpw-tile, .comp-card-wrap, .cta-band, .footer, .params-panel {
-      animation: fadeUp 0.4s ease both;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+    .footer strong {
+      color: var(--ink);
     }
   </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
+<!-- TOPBAR -->
 <div class="topbar">
   <div class="topbar-brand">
-    <div class="mark">⬢</div>
-    <span>CTC Grant <em>Outlook</em></span>
+    <div class="mark">💼</div>
+    <span>CTC Grant</span>
+    <em>Outlook</em>
   </div>
-  <div class="topbar-meta">
-    <strong>NTUC</strong> · Company Training Committee Grant
-  </div>
+  <div class="topbar-meta">NTUC – <strong>Company Training Committee Grant</strong></div>
 </div>
 
-<!-- HERO STRIP -->
+<!-- HERO -->
 <div class="hero-strip">
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">⭐ Enterprise &amp; Workforce Transformation</div>
-      <h1>Your Enterprise and Workforce Transformation,<br><em>Supported by CTC</em>.</h1>
+      <div class="hero-eyebrow">💡 Enterprise & Workforce Transformation</div>
+      <h1>Your Enterprise and Workforce Transformation, <em>Supported by CTC.</em></h1>
+      <p>The CTC Grant covers up to <strong>70% of qualifying implementation costs</strong> — capped at SGD 10,000 per worker. Adjust the parameters on the left and see your supported outlook update in real time.</p>
     </div>
-    <p>
-      The CTC Grant covers up to <strong>70% of qualifying implementation costs</strong>. Adjust the parameters on the left and see your supported outlook update in real time.
-    </p>
   </div>
 </div>
 
-<!-- 2-COLUMN LAYOUT -->
+<!-- LAYOUT: 2-COLUMN (LEFT=PARAMS, RIGHT=RESULTS) -->
 <div class="layout">
 
   <!-- LEFT: PARAMETERS PANEL -->
@@ -661,22 +650,7 @@
     </div>
     <div class="params-body">
 
-      <div class="params-section">Workforce</div>
-      <div class="field">
-        <label><span class="ico">👥</span> Workers in grant outcome <span class="lbl-hint">committed</span></label>
-        <input type="number" id="workers" value="10" min="1" max="500" step="1">
-        <span class="field-note">Workers directly covered by the grant</span>
-      </div>
-      <div class="field">
-        <label><span class="ico">🏢</span> Total company headcount <span class="optional-tag">optional</span></label>
-        <input type="number" id="totalWorkers" value="" min="1" step="1" placeholder="e.g. 50">
-        <span class="field-note">Shows benefit spread across full workforce</span>
-      </div>
-      <div class="field">
-        <label><span class="ico">💰</span> Avg monthly salary (SGD) <span class="lbl-hint">current</span></label>
-        <input type="number" id="salary" value="2000" min="0" step="100">
-      </div>
-
+      <!-- PROJECT SCOPE SECTION -->
       <div class="params-section">Project</div>
       <div class="field">
         <label><span class="ico">⚙️</span> Implementation cost (SGD)</label>
@@ -684,17 +658,35 @@
         <span id="implHint" class="field-note">Training fees, system setup, consultancy</span>
       </div>
       <div class="field">
-        <label><span class="ico">🎟️</span> Grant reimbursement rate (%)</label>
-        <input type="number" id="grantRate" value="70" min="1" max="100" step="1">
-        <span class="field-note">Up to 70% of qualifying costs</span>
-      </div>
-      <div class="field">
         <label><span class="ico">📅</span> Project duration (months)</label>
         <input type="number" id="duration" value="12" min="1" max="12" step="1">
         <span class="field-note">Max 12 months — grant disbursed on completion</span>
       </div>
+      <div class="field">
+        <label><span class="ico">🎟️</span> Grant reimbursement rate (%)</label>
+        <input type="number" id="grantRate" value="70" min="1" max="100" step="1">
+        <span class="field-note">Up to 70% of qualifying costs</span>
+      </div>
+
+      <!-- WORKFORCE COMMITMENT SECTION -->
+      <div class="params-section">Workforce</div>
+      <div class="field">
+        <label><span class="ico">👥</span> Workers in grant outcome <span class="lbl-hint">committed</span></label>
+        <input type="number" id="workers" value="10" min="1" max="500" step="1">
+        <span class="field-note">Workers directly covered by the grant</span>
+      </div>
+      <div class="field">
+        <label><span class="ico">💰</span> Avg monthly salary (SGD) <span class="lbl-hint">current</span></label>
+        <input type="number" id="salary" value="2000" min="0" step="100">
+      </div>
+      <div class="field">
+        <label><span class="ico">🏢</span> Total company headcount <span class="optional-tag">optional</span></label>
+        <input type="number" id="totalWorkers" value="" min="1" step="1" placeholder="e.g. 50">
+        <span class="field-note">Shows benefit spread across full workforce</span>
+      </div>
 
       <div id="guidelineMsg" class="guideline-banner ok"></div>
+
     </div>
   </aside>
 
@@ -807,6 +799,7 @@
   </div>
 </div>
 
+<!-- CALCULATIONS & RENDERING -->
 <script>
   let activeTab = 'a';
   let breakdownChart = null;
@@ -877,22 +870,18 @@
     const allowanceInput = document.getElementById('allowance');
     const label = document.getElementById('scInputLabel');
     const note = document.getElementById('scInputNote');
-    const strip = document.getElementById('scInputStrip');
     if (activeTab === 'a') {
       wageInput.style.display = ''; allowanceInput.style.display = 'none';
       label.innerHTML = '<span class="ico">📈</span> Wage increase % <span class="lbl-hint">Scenario A</span>';
       note.textContent = 'Monthly increment per worker';
-      strip.classList.remove('empty');
     } else if (activeTab === 'b') {
       wageInput.style.display = 'none'; allowanceInput.style.display = 'none';
       label.innerHTML = '<span class="ico">🛤️</span> Career Development Plan <span class="lbl-hint">Scenario B</span>';
       note.textContent = 'No fixed monthly cost during the project window';
-      strip.classList.add('empty');
     } else if (activeTab === 'c') {
       wageInput.style.display = 'none'; allowanceInput.style.display = '';
       label.innerHTML = '<span class="ico">🎓</span> Skills allowance (SGD) <span class="lbl-hint">Scenario C</span>';
       note.textContent = 'Per worker, per month';
-      strip.classList.remove('empty');
     }
   }
 
@@ -901,45 +890,49 @@
     const { grant, benchmarkCap, isReduced } = calcGrant(inp);
     const el = document.getElementById('guidelineMsg');
     const hintEl = document.getElementById('implHint');
-    if (isReduced) {
-      const eligible = inp.grantRate > 0 ? grant / inp.grantRate : 0;
-      const excess = inp.implCost - eligible;
+    
+    // To achieve max grant (benchmarkCap), we need: eligible_cost × 70% = benchmarkCap
+    // So: eligible_cost = benchmarkCap / 70%
+    const eligibleBase = benchmarkCap / inp.grantRate;
+    const excess = inp.implCost > eligibleBase ? inp.implCost - eligibleBase : 0;
+    
+    if (inp.implCost > eligibleBase) {
+      // Above benchmark — implementation cost exceeds the eligible base
       el.className = 'guideline-banner';
-      el.innerHTML = `📌 <strong>Above benchmark range.</strong> Grant-eligible portion ~SGD ${fmtNum(eligible)} (${inp.workers} × SGD 10k). The remaining ~SGD ${fmtNum(excess)} is borne by you. Final grant assessed case-by-case.`;
-      hintEl.textContent = `⚠️ Eligible base ~SGD ${fmtNum(eligible)}`;
+      el.innerHTML = `📌 <strong>Implementation cost above benchmark.</strong> For ${inp.workers} worker${inp.workers !== 1 ? 's' : ''}, to achieve max grant of ${fmt(benchmarkCap)}, the eligible cost should be ~${fmt(eligibleBase)}. Your additional investment: ~${fmt(excess)}. Final grant assessed case-by-case.`;
+      hintEl.textContent = `⚠️ Eligible base ~${fmt(eligibleBase)}`;
       hintEl.className = 'field-note warn';
     } else {
+      // Within benchmark
       el.className = 'guideline-banner ok';
-      el.innerHTML = `✓ Within benchmark range (cap ~SGD ${fmtNum(benchmarkCap)} for ${inp.workers} worker${inp.workers !== 1 ? 's' : ''}). Estimates are indicative.`;
+      el.innerHTML = `✓ <strong>Within benchmark.</strong> For ${inp.workers} worker${inp.workers !== 1 ? 's' : ''}, eligible cost up to ~${fmt(eligibleBase)} will be supported. Estimates are indicative.`;
       hintEl.textContent = 'Training fees, system setup, consultancy';
       hintEl.className = 'field-note';
     }
   }
 
-  /* ── PICTURE (3 BOXES) ── */
+  /* ── PICTURE ── */
   function renderPicture(data) {
     document.getElementById('picImpl').textContent = fmt(data.implCost);
 
     const ongoingEl = document.getElementById('picOngoing');
-    const ongoingSubEl = document.getElementById('picOngoingSub');
+    const ongoingSub = document.getElementById('picOngoingSub');
     if (data.totalOngoing > 0) {
       ongoingEl.textContent = fmt(data.totalOngoing);
-      ongoingSubEl.textContent = `Over ${data.n} months · ~${fmt(data.monthlyOngoing)}/mo`;
+      ongoingSub.textContent = `Over ${data.n} month${data.n !== 1 ? 's' : ''} · ~${fmt(data.monthlyOngoing)}/mo`;
     } else {
-      ongoingEl.textContent = 'SGD 0';
-      ongoingSubEl.textContent = activeTab === 'b'
+      ongoingEl.textContent = '—';
+      ongoingSub.textContent = activeTab === 'b'
         ? 'Tied to role progression — no fixed monthly cost'
-        : 'No ongoing workforce commitment';
+        : 'No ongoing workforce cost';
     }
 
     const avgMonthly = data.netCost / data.n;
     document.getElementById('picMonthly').textContent = fmt(avgMonthly);
-    document.getElementById('picMonthlySub').textContent = `Across ${data.n} month${data.n !== 1 ? 's' : ''} · net of grant`;
+    document.getElementById('picMonthlySub').textContent = `Net total spread across ${data.n} month${data.n !== 1 ? 's' : ''}`;
 
-    // Tag for impl card – show actual reimbursement amount
-    const tagEl = document.getElementById('picImplTag');
     const reimbursePct = data.implCost > 0 ? Math.round((data.grant / data.implCost) * 100) : 0;
-    tagEl.textContent = `${reimbursePct}% reimbursed via CTC Grant`;
+    document.getElementById('picImplTag').textContent = `${reimbursePct}% reimbursed via CTC Grant`;
   }
 
   /* ── CPW ── */
@@ -951,10 +944,10 @@
     if (data.totalWorkers && data.totalWorkers > data.workers) {
       const cpwTotal = data.netCost / data.totalWorkers;
       document.getElementById('cpwTotal').textContent = fmt(cpwTotal);
-      document.getElementById('cpwTotalSub').textContent = `Across ${data.totalWorkers} total employees`;
+      document.getElementById('cpwTotalSub').textContent = `Per head (${data.totalWorkers} total employees)`;
     } else {
       document.getElementById('cpwTotal').textContent = '—';
-      document.getElementById('cpwTotalSub').textContent = 'Add total headcount to view';
+      document.getElementById('cpwTotalSub').textContent = 'Per head (total headcount)';
     }
   }
 
@@ -965,7 +958,6 @@
 
     const grantPct = data.grossCost > 0 ? Math.round((data.grant / data.grossCost) * 100) : 0;
     const employerPct = 100 - grantPct;
-
     const colors = ['#52c78a', '#b8873a'];
 
     breakdownChart = new Chart(ctx, {
@@ -983,7 +975,7 @@
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        cutout: '68%',
+        cutout: '60%',
         plugins: {
           legend: { display: false },
           tooltip: {
@@ -1002,21 +994,20 @@
           ctx.save();
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          ctx.font = `400 ${Math.min(width, height) * 0.2}px DM Serif Display, Georgia, serif`;
+          ctx.font = `400 ${Math.min(width, height) * 0.22}px DM Serif Display, Georgia, serif`;
           ctx.fillStyle = '#52c78a';
-          ctx.fillText(grantPct + '%', cx, cy - 8);
-          ctx.font = `500 ${Math.min(width, height) * 0.07}px DM Sans, sans-serif`;
+          ctx.fillText(grantPct + '%', cx, cy - 12);
+          ctx.font = `500 ${Math.min(width, height) * 0.075}px DM Sans, sans-serif`;
           ctx.fillStyle = '#7a7363';
-          ctx.fillText('reimbursed', cx, cy + 12);
-          ctx.font = `400 ${Math.min(width, height) * 0.062}px DM Sans, sans-serif`;
+          ctx.fillText('reimbursed', cx, cy + 10);
+          ctx.font = `400 ${Math.min(width, height) * 0.065}px DM Sans, sans-serif`;
           ctx.fillStyle = '#b0a894';
-          ctx.fillText('via CTC Grant', cx, cy + 25);
+          ctx.fillText('via CTC Grant', cx, cy + 24);
           ctx.restore();
         }
       }]
     });
 
-    // legend
     const leg = document.getElementById('donutLegend');
     leg.innerHTML = `
       <div class="leg-row">
@@ -1071,7 +1062,7 @@
     }
   }
 
-  /* ── CDP ── */
+  /* ── CDP BOX ── */
   function toggleCDPBox() {
     document.getElementById('cdpBox').className = `cdp-box${activeTab === 'b' ? ' show' : ''}`;
   }
@@ -1084,14 +1075,13 @@
     const data = compute(inp, activeTab);
 
     toggleCDPBox();
-
     renderPicture(data);
     renderCPW(data);
     renderChart(data);
     renderComparison(inp);
   }
 
-  /* ── EVENTS ── */
+  /* ── EVENT LISTENERS ── */
   ['workers','totalWorkers','salary','wageInc','allowance','implCost','grantRate','duration'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('input', renderAll);
@@ -1099,5 +1089,6 @@
 
   renderAll();
 </script>
+
 </body>
 </html>
