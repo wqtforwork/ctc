@@ -614,6 +614,179 @@
     .footer strong {
       color: var(--ink);
     }
+
+    /* ── MOBILE RESPONSIVE ── */
+    @media (max-width: 1200px) {
+      .layout {
+        grid-template-columns: 300px 1fr;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .layout {
+        grid-template-columns: 280px 1fr;
+        gap: 1rem;
+      }
+      .params-panel {
+        max-width: 100%;
+      }
+      .pic-donut-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .layout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.8rem 1rem 1rem;
+      }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .pic-donut-row {
+        grid-template-columns: 1fr;
+      }
+      .breakdown-body {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .donut-wrap {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto;
+      }
+      .cpw-tiles {
+        grid-template-columns: 1fr;
+      }
+      .cta-band {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+      }
+      .sc-input-strip {
+        align-items: flex-start;
+        width: 100%;
+      }
+      .block-head {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .comp-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .topbar {
+        padding: 0.5rem 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .topbar-brand {
+        font-size: 0.9rem;
+      }
+      .topbar-meta {
+        font-size: 0.6rem;
+      }
+      .hero-strip {
+        padding: 1rem;
+      }
+      .hero-strip h1 {
+        font-size: 1.2rem;
+      }
+      .hero-strip p {
+        font-size: 0.7rem;
+      }
+      .layout {
+        padding: 0.6rem 0.8rem 1rem;
+        gap: 0.8rem;
+      }
+      .params-body {
+        padding: 0.6rem 0.8rem 0.8rem;
+      }
+      .field {
+        margin-bottom: 0.5rem;
+      }
+      .field label {
+        font-size: 0.68rem;
+      }
+      .field input {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+      }
+      .comp-card-wrap {
+        padding: 0.8rem;
+      }
+      .block-title {
+        font-size: 0.9rem;
+      }
+      .picture-grid {
+        gap: 0.5rem;
+      }
+      .pic-card {
+        padding: 0.6rem 0.8rem;
+        gap: 0.6rem;
+      }
+      .pic-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+      }
+      .pic-label {
+        font-size: 0.58rem;
+      }
+      .pic-val {
+        font-size: 1.1rem;
+      }
+      .breakdown-card {
+        padding: 0.8rem;
+      }
+      .donut-wrap {
+        width: 120px;
+        height: 120px;
+      }
+      .leg-row {
+        gap: 6px;
+      }
+      .leg-swatch {
+        width: 8px;
+        height: 8px;
+      }
+      .leg-text .name {
+        font-size: 0.65rem;
+      }
+      .leg-text .desc {
+        font-size: 0.58rem;
+      }
+      .leg-amt {
+        font-size: 0.8rem;
+      }
+      .cpw-tile {
+        padding: 0.7rem 0.8rem;
+      }
+      .cpw-tile-label {
+        font-size: 0.55rem;
+      }
+      .cpw-tile-val {
+        font-size: 1rem;
+      }
+      .cta-band {
+        padding: 0.8rem;
+      }
+      .cta-band h3 {
+        font-size: 0.85rem;
+      }
+      .cta-btn {
+        padding: 0.45rem 0.8rem;
+        font-size: 0.65rem;
+      }
+      .footer {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.58rem;
+      }
+    }
   </style>
 </head>
 <body>
